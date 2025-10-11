@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 对应Mapper接口的全路径 -->
+<mapper namespace="com.www.wstore.mapper.UserMapper">
+
+    <!--user的映射结果集-->
+    <resultMap type="com.www.wstore.entity.User" id="UserMapper">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="img" column="img" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="gender" column="gender" jdbcType="VARCHAR"/>
+        <result property="birthday" column="birthday" jdbcType="TIMESTAMP"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="wechat" column="wechat" jdbcType="VARCHAR"/>
+        <result property="recentLogin" column="recent_login" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <!-- 查询所有用户 -->
+    <select id="longin" resultType="User">
+        SELECT id, img, name, password, gender, birthday, address, email, phone, wechat, crecent_login FROM user where name = #{name} and password = #{password}
+
+    </select>
+
+</mapper>
