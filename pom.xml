@@ -65,6 +65,17 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!--引入JPA规范工具-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <!-- 通过内嵌 Tomcat 传递依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
 
         <!--引入Hutools工具-->
         <dependency>
