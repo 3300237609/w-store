@@ -33,5 +33,8 @@ spring:
 jwt:
   secret:  dev-secret-key-that-is-at-least-32-bytes-long-123456  # 密钥（建议复杂且保密）
   expire: 7200000
+img:
+  storage:
+    path: 'src/main/resources/static/Products/img'
 
 
