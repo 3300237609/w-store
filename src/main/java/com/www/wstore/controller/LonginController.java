@@ -19,6 +19,7 @@ public class LonginController {
     public R<User> login(@RequestBody User user, HttpServletResponse response){
         return userService.login(user,response);
     }
+    
     @PostMapping("/logout")
     public R<String> logout(HttpServletResponse response){
         return userService.logout(response);
