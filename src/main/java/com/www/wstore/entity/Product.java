@@ -3,6 +3,11 @@ package com.www.wstore.entity;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.*;
 
 /**
@@ -11,6 +16,10 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "products")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Product {
 
     /**
@@ -123,165 +132,5 @@ public class Product {
     @Column(name = "updated_at", nullable = false)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updatedAt;
-
-    // 构造方法
-    public Product() {
-    }
-
-    // Getter和Setter方法
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getSku() {
-        return sku;
-    }
-
-    public void setSku(String sku) {
-        this.sku = sku;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Long getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public Long getBrandId() {
-        return brandId;
-    }
-
-    public void setBrandId(Long brandId) {
-        this.brandId = brandId;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public BigDecimal getOriginalPrice() {
-        return originalPrice;
-    }
-
-    public void setOriginalPrice(BigDecimal originalPrice) {
-        this.originalPrice = originalPrice;
-    }
-
-    public Integer getStock() {
-        return stock;
-    }
-
-    public void setStock(Integer stock) {
-        this.stock = stock;
-    }
-
-    public Integer getSales() {
-        return sales;
-    }
-
-    public void setSales(Integer sales) {
-        this.sales = sales;
-    }
-
-    public String getMainImage() {
-        return mainImage;
-    }
-
-    public void setMainImage(String mainImage) {
-        this.mainImage = mainImage;
-    }
-
-    public String getImages() {
-        return images;
-    }
-
-    public void setImages(String images) {
-        this.images = images;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getSpecifications() {
-        return specifications;
-    }
-
-    public void setSpecifications(String specifications) {
-        this.specifications = specifications;
-    }
-
-    public Boolean getOnSale() {
-        return onSale;
-    }
-
-    public void setOnSale(Boolean onSale) {
-        this.onSale = onSale;
-    }
-
-    public Boolean getDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(Boolean deleted) {
-        this.deleted = deleted;
-    }
-
-    public Integer getSortOrder() {
-        return sortOrder;
-    }
-
-    public void setSortOrder(Integer sortOrder) {
-        this.sortOrder = sortOrder;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", sku='" + sku + '\'' +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", stock=" + stock +
-                ", onSale=" + onSale +
-                '}';
-    }
 }
+

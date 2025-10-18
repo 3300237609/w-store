@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 对应Mapper接口的全路径 -->
+<mapper namespace="com.www.wstore.mapper.ProductMapper">
+
+    <!--user的映射结果集-->
+    <resultMap type="com.www.wstore.vo.ProductVo" id="ProductVoResultMap">
+        <result property="id" column="p_id" jdbcType="BIGINT"/>
+        <result property="sku" column="p_sku" jdbcType="VARCHAR"/>
+        <result property="name" column="p_name" jdbcType="VARCHAR"/>
+        <result property="categoryId" column="p_category_id" jdbcType="BIGINT"/>
+        <result property="brandId" column="p_brand_id" jdbcType="BIGINT"/>
+        <result property="price" column="p_price" jdbcType="DECIMAL"/>
+        <result property="originalPrice" column="p_original_price" jdbcType="DECIMAL"/>
+        <result property="stock" column="p_stock" jdbcType="INTEGER"/>
+        <result property="sales" column="p_sales" jdbcType="INTEGER"/>
+        <result property="mainImage" column="p_main_image" jdbcType="VARCHAR"/>
+        <result property="images" column="p_images" jdbcType="VARCHAR"/>
+        <result property="description" column="p_description" jdbcType="VARCHAR"/>
+        <result property="specifications" column="p_specifications" jdbcType="VARCHAR"/>
+        <result property="onSale" column="p_on_sale" jdbcType="TINYINT"/>
+        <result property="deleted" column="p_deleted" jdbcType="TINYINT"/>
+        <result property="sortOrder" column="p_sort_order" jdbcType="INTEGER"/>
+        <result property="createdAt" column="p_created_at" jdbcType="TIMESTAMP"/>
+        <result property="updatedAt" column="p_updated_at" jdbcType="TIMESTAMP"/>
+
+        <result property="categoryName" column="c_categoryName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <!-- 单条商品详情查询（带分类信息） -->
+    <select id="getProductWithCategory" parameterType="Long" resultMap="ProductVoResultMap">
+        SELECT
+            p.id AS p_id,
+            p.sku AS p_sku,
+            p.name AS p_name,
+            p.price AS p_price,
+            p.sales AS p_sales,
+            p.description AS p_description,
+            p.main_image AS p_main_image,
+            c.name AS c_categoryName,
+            c.icon AS c_icon  -- 如需分类图标也可查询
+        FROM
+            products p
+                INNER JOIN
+            product_categories c
+            ON p.category_id = c.id
+        WHERE
+            p.id = #{id}  -- 按商品ID查询（主键索引，效率极高）
+          AND p.is_delete = 0
+          AND c.is_enable = 1
+    </select>
+
+    <!-- 单条商品详情查询（带分类信息） -->
+    <select id="getProductAll"  resultMap="ProductVoResultMap">
+        SELECT
+            p.id AS p_id,
+            p.sku AS p_sku,
+            p.name AS p_name,
+            p.price AS p_price,
+            p.sales AS p_sales,
+            p.description AS p_description,
+            p.main_image AS p_main_image,
+            c.name AS c_categoryName,
+            c.icon AS c_icon
+        FROM
+            products p
+                INNER JOIN
+            product_categories c
+            ON p.category_id = c.id
+        WHERE
+             p.is_delete = 0
+          AND c.is_enable = 1
+    </select>
+
+</mapper>
